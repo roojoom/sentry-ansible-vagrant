@@ -32,3 +32,29 @@ ALLOWED_HOSTS = ['{{ sentry.server }}']
 
 SENTRY_URL_PREFIX = '{{ sentry.url }}'
 SENTRY_LOGIN_URL = '{{ sentry.url }}/login/'
+
+
+
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
+        'LOCATION': ['127.0.0.1:11211'],
+    }
+}
+
+SENTRY_CACHE = 'sentry.cache.django.DjangoCache'
+
+
+EMAIL_BACKEND = 'django_ses.SESBackend'
+AWS_SES_REGION_NAME = 'us-east-1'
+AWS_SES_REGION_ENDPOINT = 'email.us-east-1.amazonaws.com'
+DEFAULT_FROM_EMAIL = {{ sentry.from_email }}
+SERVER_EMAIL = {{ sentry.from_email }}
+
+AWS_ACCESS_KEY_ID = {{ sentry.aws_key }}
+AWS_SECRET_ACCESS_KEY = {{ sentry.aws_secret_key }}
+
+CELERY_ALWAYS_EAGER = False
+BROKER_URL = 'redis://localhost:6379/0'
+
+SENTRY_ADMIN_EMAIL = {{ superuser_sentry.email }}

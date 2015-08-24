@@ -15,7 +15,7 @@ If you want to install Sentry on a VM using Vagrant, you first need to install [
 
 You can configure your install by modifying the variables in the _sentry.yml_ file before provisioning.
 
-Then: 
+Then:
 
 ```
 $ git clone https://github.com/DandyDev/sentry-ansible-vagrant.git
@@ -53,7 +53,45 @@ EMAIL_PORT = 25 # or 587/465/etc.
 EMAIL_USE_TLS = False
 SERVER_EMAIL = 'EMAIL ADDRESS MAILS SHOULD ORIGINATE FROM' # eg. sentry@mysentryserver.com
 ```
+## Changes made to support integration of azure, vagrant and sentry
 
+I forked this repository in order to provision a vm running sentry on azure cloud services.
+In order to do that I needed to change the current Vagrantfile and add configuration of azure provider.
+
+To make this repository work you need to do a number of things:
+  1. create certificates files of azure cloud service and place them in the path: '~/Projects/Keys'.
+     Names of files should be:
+      1. cert.pem
+      2. mgmt.cer
+
+  2. create a .yml file that stores all of the variables that this repository requires.
+     it should look like this:
+     ```
+     db_sentry:
+       name: 'NAME OF SENTRY USER' # for example - 'David'
+       user: 'SENTRY USER NAME' # for example - 'DavidSentry'
+       password: 'PASSWORD OF SENTRY USER' # for example - 'davidpassword12345'
+     superuser_sentry:
+       username: 'NAME OF SENTRY SUPERUSER' # for example - 'James'
+       email: 'EMAIL OF SENTRY SUPERUSER' # for example - 'James@gmail.com'
+       password: 'PASSWORD OF SENTRY SUPERUSER' # for example - 'james8763james'
+     sentry:
+       server: 'SERVER DOMAIN NAME' # for example - 'sentry.local'
+       url: 'SENTRY URL' # for example - 'http://sentry.local'
+       secret_key: 'SECRETKEY' # For example - 'Cq2jyiwDQAVor8F23Fk32Dli3C9bfmWdKOQ91EVtr2CrfgBpdx7GiEv=='
+       aws_key: 'YOUR AWS KEY' # for sending email through amazon ses
+       aws_sercet_key: 'YOUR AWS SECRET KEY' # for sending email through amazon ses
+       from_email: 'EMAIL TO SEND FROM' # This email will send the logging mails
+     pem_file: '~/Projects/Keys/cert.pem' # Default is '~/Projects/Keys/cert.pem', can change it to any path you would like
+     cer_file: '~/Projects/Keys/mgmt.cer' # Default is '~/Projects/Keys/mgmt.cer', can change it to any path you would like
+     user_name: 'USER NAME FOR SSH'
+     vm_password: 'SUDO PASSWORD FOR USER'
+     subscription_id: 'AZURE SUBSCRIPTION ID'
+     service_name: 'AZURE SERVICE NAME'
+     ```
+     this file should be found at - '~/Projects/conf' and its name need to be - 'azure-sentry.yml'
+  3. run ```vagrant plugin install vagrant-azure```
+  4. run ```vagrant up --provider=azure```
 ## Known issues / TODO
 
 * Sending mails is currently only possible through external services like Mailgun. Possibly install `postfix` for this purpose.

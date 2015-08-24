@@ -1,18 +1,7 @@
 - hosts: all
   sudo: True
-  vars:
-    db_sentry:
-      name: sentry
-      user: sentry
-      password: sentry
-    superuser_sentry:
-      username: admin
-      email: admin@example.com
-      password: admin
-    sentry:
-      server: sentry.local
-      url: http://sentry.local
-      secret_key: 'my69eAMYjzqtmfaRJ107MeXCYDTaxQdNZPr8YOf/zOV5pIUoZa5biA=='
+  vars_files:
+  - "~/Projects/conf/azure-sentry.yml"
   roles:
     - common
     - python
@@ -21,4 +10,3 @@
       nginx_sites: none
     - postgres
     - sentry
-

@@ -17,5 +17,7 @@
 - name: install pip
   easy_install: name=pip
 
-- name: install virtualenv
-  pip: name=virtualenv
+- name: install virtualenvwrapper
+  pip: name=virtualenvwrapper
+
+

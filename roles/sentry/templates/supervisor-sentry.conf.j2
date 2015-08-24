@@ -4,3 +4,12 @@ environment=PATH="/var/sentry/ve/bin"
 autostart=true
 autorestart=true
 redirect_stderr=true
+
+[program:sentry-worker]
+directory=/var/sentry/ve
+user=roojsentry
+command=/var/sentry/ve/bin/sentry --config=/var/sentry/sentry_conf.py celery worker -B -l DEBUG -c 4
+autostart=true
+autorestart=false
+redirect_stderr=true
+killasgroup=true
