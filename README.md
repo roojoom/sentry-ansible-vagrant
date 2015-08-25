@@ -1,4 +1,4 @@
-# Sentry with Ansible
+# Azure - VM running Sentry, provisioned by Vagrant and Ansible
 
 This playbook provides a complete, hassle-free way to setup [Sentry](https://github.com/getsentry/sentry) on a VPS/Dedicated Server. You can also optionally install it on a Virtual Machine using Vagrant so you can play around with it. This project is a continuation of [sentry-vagrant](https://github.com/DandyDev/sentry-vagrant), using Ansible, because I wanted to try that out as well. Turns out, I like it better than Puppet, so I will maintain this version, and probably not the Puppet version.
 
