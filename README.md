@@ -63,7 +63,7 @@ To make this repository work you need to do a number of things:
      Names of files should be:
       1. cert.pem
       2. mgmt.cer
-     You could find details about how to create those files in - `https://github.com/Azure/vagrant-azure`
+     You could find details about how to create those files in - [Vagrant-azure repository](https://github.com/Azure/vagrant-azure)
 
   2. create a .yml file that stores all of the variables that this repository requires.
      it should look like this:
