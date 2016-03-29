@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="97918b13-4232-46c5-b673-0ce27f8e381b" name="Default" comment=".idea">
+    <list default="true" id="97918b13-4232-46c5-b673-0ce27f8e381b" name="Default" comment="">
       <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="" />
     </list>
     <ignored path="sentry-ansible-vagrant.iws" />
@@ -386,7 +386,13 @@
       <option name="project" value="LOCAL" />
       <updated>1459238800221</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary=".idea">
+      <created>1459238870134</created>
+      <option name="number" value="00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1459238870134</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="ToolWindowManager">
