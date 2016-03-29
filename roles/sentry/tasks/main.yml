@@ -2,43 +2,43 @@
 
 - name: ensure sentry directory exists
   file:
-    path: /var/sentry/
+    path: /www/sentry/
     state: directory
 
 - name: install sentry and create virtualenv if needed
   pip:
     name: sentry[postgres]
-    virtualenv: /var/sentry/ve
+    virtualenv: sentry
 
 - name: install memcached
   pip:
     name: python-memcached
-    virtualenv: /var/sentry/ve
+    virtualenv: sentry
 
 - name: install sentry-slack
   pip:
     name: sentry-slack
-    virtualenv: /var/sentry/ve
+    virtualenv: sentry
 
 - name: install django-ses
   pip:
     name: django-ses
-    virtualenv: /var/sentry/ve
+    virtualenv: sentry
 
 - name: install celery
   pip:
     name: celery
-    virtualenv: /var/sentry/ve
+    virtualenv: sentry
 
 - name: install celery[sentry]
   pip:
     name: celery[sentry]
-    virtualenv: /var/sentry/ve
+    virtualenv: sentry
 
 - name: install sentry-trello
   pip:
     name: sentry-trello
-    virtualenv: /var/sentry/ve
+    virtualenv: sentry
 
 - name: install redis-server
   apt: pkg={{ item }} state=latest

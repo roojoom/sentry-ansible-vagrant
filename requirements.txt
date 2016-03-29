@@ -1,0 +1,10 @@
+sentry
+psycopg2
+sentry[postgres]
+python-memcached
+sentry-slack
+django-ses
+celery
+celery[sentry]
+sentry-trello
+
